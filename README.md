@@ -1,6 +1,6 @@
 # File Renamer
 
-## Rename files based on a text file
+### Rename files based on a text file
 
 This idea was originated when I downloaded multiple video lectures and happened that their names were not properly configured.
 
@@ -16,7 +16,7 @@ The script was created to avoid renamining all the video files manually, by extr
 
 # Demo
 
-## Before
+### Before
 
   
 >  $ ls -l E:/Test/   
@@ -32,7 +32,7 @@ The script was created to avoid renamining all the video files manually, by extr
 > Ending: The end     
 
 
-## Running the script
+### Running the script
 > $ python renamer.py 
 > 
 > Welcome to File-Renamer
@@ -51,7 +51,7 @@ The script was created to avoid renamining all the video files manually, by extr
 > 
 > Rename was done.
 
-## After
+### After
 > $ ls -l E:/Test/    
 > total 69545     
 > -rw-r--r-- 1 lucas 197609 48999579 Apr  7 20:54 '1 - Introduction.mp4'      
