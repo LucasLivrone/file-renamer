@@ -6,8 +6,7 @@ def main():
     actual_names = get_actual_names(actual_names_path, name_pattern, file_extension)
     new_names = get_new_names(new_names_file)
     if len(actual_names) == len(new_names):
-        rename(actual_names_path, actual_names, new_names)
-        quit("Rename was done.")
+        rename(actual_names_path, actual_names, new_names, file_extension)
     else:
         quit("Actual and New names quantities don't match.")
 
@@ -37,7 +36,7 @@ def get_actual_names(actual_names_path, name_pattern, file_extension):
 
 def get_new_names(new_names_file):
     with open(new_names_file) as f:
-        names = f.read().splitlines()  # Creates a list with all lines from the NAMES_FILE.
+        names = f.read().splitlines()  # Creates a list with all lines from new_names_file.
     names = names_sanitization(names)  
     return names
 
@@ -53,10 +52,19 @@ def names_sanitization(names):
     return names
 
 
-def rename(actual_names_path, actual_names, new_names):
-    for actual_name, new_name in zip(actual_names,new_names):
-        #print(f'The file {actual_name} will be renamed to: {new_name+".mp4"}')  # Can be used to check if the final result is the expected one.
-        os.rename(actual_names_path+actual_name, actual_names_path+new_name+'.mp4')
+def rename(actual_names_path, actual_names, new_names, file_extension):
+    preview = input("\nType 'yes' to see a preview of final result: ")
+    if preview == 'yes':
+        for actual_name, new_name in zip(actual_names,new_names):
+            print(f'The file {actual_name} will be renamed to: {new_name+file_extension}')
+
+    confirmation = input("\nType 'yes' to confirm rename: ")
+    if confirmation == 'yes':
+        for actual_name, new_name in zip(actual_names,new_names):
+            os.rename(actual_names_path+actual_name, actual_names_path+new_name+'.mp4')
+        quit("\nRename was done.")
+    else:
+        quit("\nRename was cancelled.")
 
 
 if __name__ == '__main__':
