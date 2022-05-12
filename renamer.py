@@ -2,8 +2,8 @@ import os
 
 
 def main():
-    actual_names_path, new_names_file = get_path_and_file()
-    actual_names = get_actual_names(actual_names_path)
+    actual_names_path, new_names_file, name_pattern, file_extension = get_path_and_file()
+    actual_names = get_actual_names(actual_names_path, name_pattern, file_extension)
     new_names = get_new_names(new_names_file)
     if len(actual_names) == len(new_names):
         rename(actual_names_path, actual_names, new_names)
@@ -16,14 +16,16 @@ def get_path_and_file():
     print("\nWelcome to File-Renamer\n")
     actual_names_path = input("Select files path: ")
     new_names_file = input("Select name file: ")
-    return actual_names_path, new_names_file
+    name_pattern = input("Select name pattern: ")
+    file_extension = input("Select file extension: ")
+    return actual_names_path, new_names_file, name_pattern, file_extension
 
 
-def get_actual_names(actual_names_path):
+def get_actual_names(actual_names_path, name_pattern, file_extension):
     file_dictionary = dict()
     for file in os.listdir(actual_names_path):
-        if "video" in file:
-            key = int(file.replace('video','').replace('.mp4',''))
+        if name_pattern in file:
+            key = int(file.replace(name_pattern,'').replace(file_extension,''))
             file_dictionary.update({key:file})  # Example: generated dictionary will have { 1: 'video1.mp4', 10: 'video10.mp4, ... , 2: 'video2.mp4', ... }
 
     file_list = list()
