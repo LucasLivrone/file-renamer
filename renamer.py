@@ -47,7 +47,14 @@ def names_sanitization(names):
         if names[i][-1] == " ":
             names[i] = names[i][:-1]  # This will remove the last withespace if any.
 
-        names[i] = str(i+1) +" - "+ names[i].replace(":",' -').replace("/",'-')  # Windows do not support ':' and '/' in names.
+        for c in [":","/","\\","?","|","*","<",">"]:  # These characters cannot be used in names.
+            if c in names[i]:
+                names[i] = names[i].replace(c,"-")
+        
+        if names[i][-1] == "-":  # This will remove the last '-' if any. There will be one if there is a '?' at the end of the original name.
+            names[i] = names[i][:-1]
+
+        names[i] = str(i+1) +" - "+ names[i]  # This will keep the files organized by adding the index at the beggining.
 
     return names
 
