@@ -12,13 +12,13 @@ Luckily enough, there was a text file provided with all the names inside, one na
 
 The script was created to avoid renamining all the video files manually, by extracting them from the text file.
 
-### Demo
+## Demo
 
-Before  
+### Before  
 ![Before](https://i.imgur.com/3ppfom5.png)
 
-Running the script  
+### Running the script  
 ![Running](https://imgur.com/32CLLSm.png)
 
-### After
+### After   
 ![After](https://imgur.com/cHK1Zhl.png)
